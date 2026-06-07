@@ -182,15 +182,15 @@ th{background:#f8fafc;color:#475569}
 <script>
 const KEY="prospectflow_v2";
 const statuses=["Novo","Mensagem enviada","Follow-up","Respondeu","Reunião marcada","Proposta enviada","Fechado","Perdido","Não contatar"];
-let state=load(), preview=[], prospectIndex=0;
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
-function now(){return new Date().toISOString()} function today(){return now().slice(0,10)}
-function addDays(n){let d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
 const DEFAULT_MESSAGES={
   initial:"Olá, {{nome}}. Encontrei vocês enquanto pesquisava {{nicho}} em {{cidade}}.\n\nMuitos negócios desse segmento enfrentam {{dor}}.\n\nEu trabalho com {{produto}} para ajudar a {{beneficio}}.\n\nPosso te mostrar um exemplo rápido?",
   followup:"Oi, tudo bem? Passando só para retomar minha mensagem anterior.\n\nA ideia era mostrar uma forma simples de ajudar com {{dor}} para {{nome}}.\n\nFaz sentido eu te mandar um exemplo rápido?",
   positive:"Perfeito, {{nome}}!\n\nSeparei este exemplo de {{produto}} pensando no que pode fazer sentido para vocês:\n\n{{link}}\n\n{{observacao}}\n\nEsse é apenas um modelo de demonstração. A solução pode ser personalizada de acordo com a identidade, o momento e as necessidades da {{nome}}.\n\nDepois que olhar, me diz o que achou?"
 };
+let state=load(), preview=[], prospectIndex=0;
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function now(){return new Date().toISOString()} function today(){return now().slice(0,10)}
+function addDays(n){let d=new Date();d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
 function defaultMsg(kind="initial"){return DEFAULT_MESSAGES[kind]||DEFAULT_MESSAGES.initial}
 function load(){let r=localStorage.getItem(KEY); if(r){try{return JSON.parse(r)}catch(e){}}
 let c={id:uid(),name:"Pousadas em Santa Catarina",niche:"pousadas e hostels",offer:"site + automação de WhatsApp",pain:"reservas, hóspedes e atendimento pelo WhatsApp",benefit:"aumentar reservas diretas",link:"https://exemplo.com",messageTemplate:defaultMsg("initial"),initialMessage:defaultMsg("initial"),followupMessage:defaultMsg("followup"),positiveMessage:defaultMsg("positive"),createdAt:now(),status:"Ativa"};
